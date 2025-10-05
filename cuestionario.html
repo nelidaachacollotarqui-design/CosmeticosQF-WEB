@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COSMÉTICOS QF - Cuestionario Cabello</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Define your custom font face if you want to use it */
+        @font-face {
+            font-family: 'Muthiara';
+            src: url('Muthiara.otf') format('opentype'),
+                 url('Muthiara.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        /* Color palette and general styles from index.html */
+        :root {
+            --light-pink: #F3C3C5;
+            --rose-pink: #E9ABAE;
+            --coral-pink: #D78289;
+            --deep-rose: #C65C69;
+            --rich-raspberry: #B5123A;
+            --light-rose-variant: #FADAD9;
+        }
+
+        /* Estilos Generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background-image: url('Fondo 1.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-color: var(--light-rose-variant);
+        }
+
+        /* Main Banner de Cuestionario */
+        .main-banner {
+            text-align: center;
+            background-color: rgba(252, 228, 236, 0.6);
+            padding: 30px 20px;
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--rich-raspberry);
+            margin-top: 20px;
+        }
+
+        .cuestionario-container {
+            max-width: 700px;
+            background: #fff;
+            padding: 20px;
+            margin: 30px auto;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+
+        .pregunta {
+            margin-bottom: 20px;
+        }
+
+        .pregunta h3 {
+            color: var(--rich-raspberry);
+            margin-bottom: 10px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: var(--rich-raspberry);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: var(--deep-rose);
+        }
+
+        #resultado {
+            text-align: center;
+            font-size: 22px;
+            font-weight: bold;
+            color: var(--rich-raspberry);
+            margin-top: 20px;
+        }
+
+        /* Estilo para el nuevo botón de redirección */
+        .resultado-link {
+            display: inline-block;
+            margin-top: 15px;
+            background-color: var(--coral-pink);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+        }
+
+        .resultado-link:hover {
+            background-color: var(--deep-rose);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-banner">
+        CUESTIONARIO PARA SABER TU TIPO DE CABELLO
+    </div>
+
+    <div class="cuestionario-container">
+        <form id="formulario">
+            <div class="pregunta">
+                <h3>1. ¿Con qué frecuencia tu cabello se engrasa?</h3>
+                <label><input type="radio" name="p1" value="graso"> Todos los días</label>
+                <label><input type="radio" name="p1" value="mixto"> Cada 2-3 días</label>
+                <label><input type="radio" name="p1" value="seco"> Cada semana</label>
+            </div>
+
+            <div class="pregunta">
+                <h3>2. ¿Cómo se siente tu cabello al tacto?</h3>
+                <label><input type="radio" name="p2" value="seco"> Áspero o con frizz</label>
+                <label><input type="radio" name="p2" value="graso"> Muy suave y aceitoso</label>
+                <label><input type="radio" name="p2" value="mixto"> Suave en la raíz, seco en puntas</label>
+            </div>
+
+            <div class="pregunta">
+                <h3>3. ¿Cómo reacciona tu cabello a la humedad?</h3>
+                <label><input type="radio" name="p3" value="seco"> Se esponja demasiado</label>
+                <label><input type="radio" name="p3" value="graso"> Se aplasta y se ve sucio</label>
+                <label><input type="radio" name="p3" value="mixto"> Solo las puntas se encrespan</label>
+            </div>
+
+            <div class="pregunta">
+                <h3>4. ¿Qué aspecto tiene tu cuero cabelludo?</h3>
+                <label><input type="radio" name="p4" value="graso"> Brillante con exceso de sebo</label>
+                <label><input type="radio" name="p4" value="seco"> Tirante o con descamación</label>
+                <label><input type="radio" name="p4" value="normal"> Normal, sin problemas visibles</label>
+            </div>
+
+            <button type="button" onclick="calcularResultado()">Enviar</button>
+        </form>
+        <div id="resultado"></div>
+    </div>
+
+    <script>
+        function calcularResultado() {
+            const respuestas = document.querySelectorAll('input[type="radio"]:checked');
+            if (respuestas.length < 4) {
+                document.getElementById("resultado").innerHTML = "Por favor responde todas las preguntas.";
+                return;
+            }
+
+            let conteo = {seco: 0, graso: 0, mixto: 0, normal: 0};
+            respuestas.forEach(r => conteo[r.value]++);
+
+            let tipo = "normal";
+            let max = 0;
+            for (let key in conteo) {
+                if (conteo[key] > max) {
+                    max = conteo[key];
+                    tipo = key;
+                }
+            }
+
+            let mensaje = "";
+            let pagina = "";
+
+            switch (tipo) {
+                case "seco":
+                    mensaje = "Tu tipo de cabello es: SECO. ¡Necesitas hidratación profunda!";
+                    pagina = "cabello-seco.html";
+                    break;
+                case "graso":
+                    mensaje = "Tu tipo de cabello es: GRASO. Requieres productos que controlen la oleosidad.";
+                    pagina = "cabello-graso.html.html";
+                    break;
+                case "mixto":
+                    mensaje = "Tu tipo de cabello es: MIXTO. Cuida raíz y puntas por separado.";
+                    pagina = "cabello-normal.html";
+                    break;
+                case "normal":
+                    mensaje = "Tu tipo de cabello es: NORMAL. ¡Sigue cuidándolo!";
+                    pagina = "cabello-normal.html";
+                    break;
+            }
+            
+            // Crea el botón de redirección
+            const linkHTML = `<a href="${pagina}" class="resultado-link">Ver productos para cabello ${tipo.toUpperCase()}</a>`;
+            
+            document.getElementById("resultado").innerHTML = `${mensaje}<br>${linkHTML}`;
+        }
+    </script>
+
+</body>
+</html>

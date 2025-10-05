@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Acerca de - COSMÉTICOS QF</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+    @font-face {
+        font-family: 'Muthiara';
+        src: url('Muthiara.otf') format('opentype'),
+             url('Muthiara.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    :root {
+        --light-pink: #F3C3C5;
+        --rose-pink: #E9ABAE;
+        --coral-pink: #D78289;
+        --deep-rose: #C65C69;
+        --rich-raspberry: #B5123A;
+        --light-rose-variant: #FADAD9;
+    }
+
+    body {
+        margin: 0;
+        font-family: 'Muthiara', sans-serif;
+        background-color: var(--light-rose-variant);
+        color: #222;
+        line-height: 1.6;
+        background-image: url('Fondo 4.jpg');
+        background-size: cover;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+
+    /* Header centralizado para "COSMÉTICOS QF" */
+    header {
+        background-color: transparent;
+        color: var(--rich-raspberry);
+        text-align: center;
+        padding: 25px 0;
+        font-size: 3.2rem;
+        font-weight: normal;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        backdrop-filter: blur(0px);
+    }
+
+    /* Contenedor principal para las dos columnas */
+    .main-content-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 40px 20px;
+        gap: 30px;
+        max-width: 1200px;
+        margin: 40px auto;
+        background: transparent;
+        border-radius: 15px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        animation: fadeIn 1.2s ease-in;
+    }
+
+    /* Estilos de la sección "Acerca de..." (Columna izquierda) */
+    .about-section {
+        background: transparent;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        flex: 1;
+        min-width: 450px;
+    }
+
+    .about-section h1 {
+        color: var(--deep-rose);
+        text-align: left;
+        font-size: 2.8rem;
+        margin-bottom: 25px;
+        font-weight: normal;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+    }
+
+    .about-section h2 {
+        color: var(--coral-pink);
+        text-align: center;
+        margin-top: 30px;
+        margin-bottom: 15px;
+        font-weight: normal;
+        text-transform: uppercase;
+        letter-spacing: 1.2px;
+    }
+
+    .about-section p {
+        font-size: 1rem;
+        line-height: 1.7;
+        color: #222;
+        margin-bottom: 18px;
+        text-align: justify;
+    }
+
+    .about-section .intro-paragraph {
+        text-align: center;
+        font-size: 1.2rem;
+        font-weight: normal;
+        margin-bottom: 30px;
+        color: #222;
+    }
+
+    /* Contenedor de la historia para imagen y video */
+    .history-media-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        margin-top: 20px;
+    }
+    
+    .history-media-container img {
+        width: 100%;
+        max-width: 400px; /* Tamaño más grande para una sola imagen */
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease;
+    }
+    .history-media-container img:hover {
+        transform: scale(1.03);
+    }
+    
+    .history-media-container iframe {
+        width: 100%;
+        max-width: 560px; /* Ancho estándar de un video de YouTube */
+        height: 315px; /* Altura estándar para la relación de aspecto 16:9 */
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .contact-info {
+        margin-top: 30px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(181, 18, 58, 0.2);
+        text-align: center;
+    }
+
+    .contact-info p {
+        margin-bottom: 8px;
+        font-size: 1rem;
+        font-weight: normal;
+        color: #222;
+        text-align: center;
+    }
+
+    .contact-info a {
+        color: var(--rich-raspberry);
+        text-decoration: none;
+        font-weight: normal;
+        transition: color 0.3s ease;
+    }
+
+    .contact-info a:hover {
+        text-decoration: underline;
+        color: var(--deep-rose);
+    }
+
+    /* Estilos de la sección del mapa (Columna derecha) */
+    .map-section {
+        flex: 1;
+        min-width: 400px;
+        background: transparent;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 20px;
+    }
+
+    .map-section iframe {
+        width: 100%;
+        height: 450px;
+        border: none;
+        display: block;
+    }
+
+    .map-text-overlay {
+        padding: 15px;
+        background: rgba(243, 195, 197, 0.9);
+        border-bottom-left-radius: 12px;
+        border-bottom-right-radius: 12px;
+        border-top: 1px solid rgba(255, 255, 255, 0.3);
+        font-size: 1rem;
+        color: var(--deep-rose);
+        text-align: center;
+        backdrop-filter: blur(5px);
+    }
+
+    .map-text-overlay p {
+        margin: 0 0 5px 0;
+        font-weight: normal;
+        color: var(--deep-rose);
+    }
+    .map-text-overlay .details {
+        font-size: 0.9rem;
+        color: var(--coral-pink);
+    }
+    .map-text-overlay a {
+        color: var(--rich-raspberry);
+        text-decoration: none;
+        font-weight: normal;
+    }
+    .map-text-overlay a:hover {
+        text-decoration: underline;
+    }
+
+    /* Estilos para Misión y Visión */
+    .mission-vision {
+        margin-top: 35px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        gap: 25px;
+        padding: 15px;
+    }
+
+    .mission-vision div {
+        flex: 1;
+        background: rgba(243, 195, 197, 0.9);
+        padding: 20px 18px;
+        border-radius: 12px;
+        text-align: center;
+        box-shadow: 0 4px 12px rgba(181, 18, 58, 0.15);
+        min-width: 280px;
+        transition: background 0.3s ease;
+        backdrop-filter: blur(5px);
+    }
+
+    .mission-vision div:hover {
+        background: rgba(233, 171, 174, 0.9);
+    }
+
+    .mission-vision p {
+        font-weight: normal;
+        font-size: 1rem;
+        color: #222;
+        margin-bottom: 0;
+    }
+
+    /* Estilos para los Valores */
+    .values-list {
+        margin-top: 40px;
+        padding: 15px;
+    }
+
+    .values-list h2 {
+        color: var(--coral-pink);
+        text-align: center;
+        margin-bottom: 15px;
+        font-weight: normal;
+        text-transform: uppercase;
+        letter-spacing: 1.2px;
+    }
+
+    .values-list ul {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 20px;
+        list-style: none;
+        padding: 0;
+        margin-top: 15px;
+    }
+
+    .values-list li {
+        background: var(--coral-pink); /* Color de fondo del botón */
+        padding: 14px 26px; /* Espaciado del botón */
+        border-radius: 30px; /* Borde redondeado */
+        font-weight: normal;
+        font-size: 1.2rem; /* Tamaño de fuente del botón */
+        text-align: center;
+        color: #222;
+        box-shadow: 0 6px 15px rgba(181, 18, 58, 0.4); /* Sombra del botón */
+        transition: background 0.4s ease, box-shadow 0.4s ease, color 0.4s ease;
+        user-select: none;
+        cursor: pointer;
+    }
+
+    .values-list li:hover {
+        background: var(--deep-rose); /* Color al pasar el mouse */
+        box-shadow: 0 8px 20px rgba(161, 7, 63, 0.7); /* Sombra al pasar el mouse */
+        color: #fff; /* Color de texto al pasar el mouse */
+        transform: none; /* Elimina la rotación para un efecto más limpio */
+    }
+
+    /* Botón de volver al inicio */
+    .back-btn {
+        display: block;
+        text-align: center;
+        margin: 40px auto 10px;
+        background: var(--coral-pink);
+        color: #222;
+        padding: 14px 26px;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: normal;
+        width: 220px;
+        font-size: 1.2rem;
+        box-shadow: 0 6px 15px rgba(181, 18, 58, 0.4);
+        transition: background 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .back-btn:hover {
+        background: var(--deep-rose);
+        box-shadow: 0 8px 20px rgba(161, 7, 63, 0.7);
+        cursor: pointer;
+        color: #fff;
+    }
+
+    /* Pie de página */
+    footer {
+        text-align: center;
+        background: rgba(243, 195, 197, 0.9);
+        padding: 18px;
+        font-size: 0.9rem;
+        margin-top: 50px;
+        font-weight: normal;
+        color: #222;
+        letter-spacing: 0.8px;
+        box-shadow: 0 -2px 5px rgba(0,0,0,0.05);
+        backdrop-filter: blur(5px);
+    }
+
+    /* Animación de entrada */
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px);}
+        to { opacity: 1; transform: translateY(0);}
+    }
+
+    /* Media Queries para responsividad */
+    @media (max-width: 900px) {
+        .main-content-wrapper {
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            margin: 20px auto;
+        }
+
+        .about-section, .map-section {
+            min-width: unset;
+            width: 100%;
+        }
+
+        .about-section h1 {
+            font-size: 2rem;
+            text-align: center;
+        }
+
+        .history-media-container {
+            align-items: center;
+        }
+
+        .history-media-container img {
+            max-width: 100%;
+        }
+        
+        .history-media-container iframe {
+            width: 100%;
+            height: auto;
+            min-height: 200px;
+        }
+
+        .mission-vision {
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .values-list ul {
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 10px;
+        }
+    }
+</style>
+</head>
+<body>
+
+<header>
+    COSMÉTICOS QF
+</header>
+
+<div class="main-content-wrapper">
+    <div class="about-section">
+        <h1>Acerca de...</h1>
+        <p class="intro-paragraph">
+            ¡Bienvenid@ a COSMÉTICOS QF! Porque la belleza auténtica es para todos, aquí encontrarás productos que cuidan, nutren y potencian tu mejor versión. ¡Descubre cómo cuidarte nunca fue tan fácil y divertido!
+        </p>
+
+        <h2>Nuestra Historia</h2>
+        <p>
+Cosméticos QF nació en el mercado Fermín López al identificar la falta de productos de belleza de calidad. Su éxito permitió abrir un segundo puesto en el mercado Roberto Young, consolidando el negocio gracias a la atención personalizada, buenos precios y visión de crecimiento.
+        </p>
+        
+        <div class="history-media-container">
+            <img src="https://via.placeholder.com/400x250?text=Nuestra+Historia" alt="Historia Cosméticos QF">
+            <iframe 
+                src="HISTORIA.mp4" 
+                title="Video de Nuestra Historia - COSMÉTICOS QF" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+        </div>
+
+        <div class="contact-info">
+            <p><strong>Teléfono:</strong> <a href="tel:+5916828587">+591 6828587</a></p>
+            <p><strong>Ubicación:</strong> Calle Washington, Oruro, Bolivia</p>
+            <p><strong>Email:</strong> cosmeticosqf@gmail.com </p>
+            <p><strong>Redes Sociales:</strong> <a href="https://facebook.com/CosmeticosQF" target="_blank">Facebook</a></p>
+        </div>
+    </div>
+
+    <div class="map-section">
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15252.41703641219!2d-67.11204629999999!3d-17.9620709!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x93e7c2a7f0e6e7d7%3A0x6b7d1e7c8f2b3c2a!2sCalle%20Washington%2C%20Oruro%2C%20Bolivia!5e0!3m2!1sen!2sus!4v1678881234567!5m2!1sen!2sus"
+            width="100%"
+            height="450"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Ubicación de Cosméticos QF en Oruro">
+        </iframe>
+
+        <div class="map-text-overlay">
+            <p>COSMÉTICOS QF</p>
+            <p class="details">Calle Washington, Oruro, Bolivia</p>
+            <p class="details">4.8 ⭐⭐⭐⭐⭐ (52 opiniones) <a href="https://www.google.com/maps/place/Calle+Washington,+Oruro,+Bolivia" target="_blank">Ver en Google Maps</a></p>
+        </div>
+
+        <div class="mission-vision">
+            <div>
+                <h2>Misión</h2>
+                <p>
+                    Nos comprometemos a mantener precios justos y accesibles, garantizando que todos puedan acceder a productos de calidad sin necesidad de buscar en otros lugares. Esta honestidad nos ha ganado la confianza de clientes, incluso aquellos que vienen de lejos por la seguridad que ofrecemos.
+                    Valoramos el esfuerzo de cada cliente y trabajamos para extender nuestras ventas, llevando productos confiables a quienes no tienen fácil acceso.
+                </p>
+            </div>
+            <div>
+                <h2>Visión</h2>
+                <p>
+                    Aspiramos a crecer y consolidar nuestro negocio, transformándolo en una tienda grande que ofrezca una variedad de productos que satisfagan las necesidades de nuestra comunidad. Queremos que nuestros clientes, incluso quienes vienen de lejos, reciban un excelente servicio y se sientan valorados, porque la paciencia y la atención cercana son los pilares de nuestro compromiso.
+                </p>
+            </div>
+        </div>
+
+        <div class="values-list">
+            <h2>Nuestros Valores</h2>
+            <ul>
+                <li>Pasión por la Belleza</li>
+                <li>Innovación</li>
+                <li>Calidad Superior</li>
+                <li>Cuidado Consciente</li>
+                <li>Transparencia</li>
+                <li>Integridad</li>
+                <li>Sostenibilidad</li>
+                <li>Confianza</li>
+                <li>Bienestar</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<a href="rosental 2.html" class="back-btn" title="Volver a la página principal">Volver al Inicio</a>
+
+<footer>
+    © 2025 COSMÉTICOS QF. Todos los derechos reservados nelidaachacollotarqui@gmail.com-rominacama236@gmail.com 
+</footer>
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        setTimeout(() => {
+            const videoFrame = document.getElementById('historyVideo');
+            if (videoFrame) {
+                let src = videoFrame.src;
+                // Add autoplay parameter
+                if (src.indexOf('?') === -1) {
+                    videoFrame.src = src + '?autoplay=1';
+                } else {
+                    videoFrame.src = src + '&autoplay=1';
+                }
+            }
+        }, 60000); // 60000 ms = 1 minuto
+    });
+</script>
+</body>
+</html>

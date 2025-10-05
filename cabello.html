@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+ <html lang="es">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>COSMÉTICOS QF - Cabello</title>
+     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+     <style>
+         /* Define your custom font face if you want to use it */
+         @font-face {
+             font-family: 'Muthiara';
+             src: url('Muthiara.otf') format('opentype'),
+                  url('Muthiara.ttf') format('truetype');
+             font-weight: normal;
+             font-style: normal;
+         }
+ 
+         /* Color palette and general styles from index.html */
+         :root {
+             --light-pink: #F3C3C5;
+             --rose-pink: #E9ABAE;
+             --coral-pink: #D78289;
+             --deep-rose: #C65C69;
+             --rich-raspberry: #B5123A;
+             --light-rose-variant: #FADAD9;
+         }
+ 
+         /* Estilos Generales */
+         * {
+             margin: 0;
+             padding: 0;
+             box-sizing: border-box;
+         }
+ 
+         body {
+             font-family: 'Poppins', sans-serif;
+             color: #333;
+             line-height: 1.6;
+             background-image: url('Fondo 1.jpg');
+             background-size: cover;
+             background-repeat: no-repeat;
+             background-attachment: fixed;
+             background-color: var(--light-rose-variant);
+         }
+ 
+         /* HEADER con fondo semitransparente */
+         header {
+             background: rgba(255, 255, 255, 0.1);
+             text-align: center;
+             padding: 20px;
+             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+             display: flex;
+             flex-direction: column;
+             align-items: center;
+         }
+         
+         /* Logo Styles - Exactly as in index.html */
+         .header-logo {
+             height: 50vh;
+             margin-bottom: 10px;
+             filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.25));
+             display: block;
+             animation: pulse 3s infinite ease-in-out;
+             margin: 0;
+         }
+ 
+         @keyframes pulse {
+             0%, 100% { transform: scale(1); }
+             50% { transform: scale(1.05); }
+         }
+ 
+         header h1 {
+             font-size: 2.2rem;
+             color: var(--rich-raspberry);
+             margin-bottom: 5px;
+         }
+ 
+         header p {
+             font-size: 1.1rem;
+             color: #555;
+         }
+ 
+         .social-icons {
+             margin-top: 15px;
+             font-size: 20px;
+         }
+ 
+         .social-icons a {
+             margin: 0 12px;
+             text-decoration: none;
+             color: var(--rich-raspberry);
+             font-weight: bold;
+             transition: color 0.3s ease;
+         }
+ 
+         .social-icons a:hover {
+             color: var(--deep-rose);
+         }
+ 
+         /* Main Banner para esta página */
+         .main-banner {
+             text-align: center;
+             background-color: rgba(252, 228, 236, 0.6);
+             padding: 40px 20px;
+             font-size: 1.2rem;
+             color: var(--rich-raspberry);
+             margin-top: 20px;
+         }
+ 
+         .main-banner h1 {
+             font-size: 2.8rem;
+             margin-bottom: 10px;
+             color: var(--rich-raspberry);
+         }
+ 
+         .main-banner p {
+             font-size: 1.3rem;
+             color: #555;
+         }
+ 
+         /* Contenedor de categorías */
+         .category-container {
+             display: grid;
+             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+             gap: 30px;
+             justify-items: center;
+             margin: 40px auto;
+             max-width: 1200px;
+             padding: 0 20px;
+         }
+ 
+         .category-card {
+             background: rgba(255, 255, 255, 0.6);
+             border-radius: 12px;
+             box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+             width: 100%;
+             max-width: 300px;
+             text-align: center;
+             padding: 20px;
+             transition: transform 0.3s ease;
+             display: flex;
+             flex-direction: column;
+             justify-content: space-between;
+             min-height: 300px;
+         }
+ 
+         .category-card:hover {
+             transform: translateY(-8px);
+         }
+ 
+         .category-card img {
+             width: 100%;
+             height: 180px;
+             object-fit: contain; /* Reverted to original value */
+             border-radius: 8px;
+             margin-bottom: 15px;
+         }
+ 
+         .category-card h3 {
+             font-size: 1.5rem;
+             color: var(--rich-raspberry);
+             margin-bottom: 15px;
+         }
+ 
+         .category-card a {
+             display: inline-block;
+             margin-top: auto;
+             background-color: var(--rose-pink);
+             color: #000;
+             padding: 10px 20px;
+             border-radius: 6px;
+             text-decoration: none;
+             font-weight: bold;
+             transition: background 0.3s ease;
+             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+         }
+ 
+         .category-card a:hover {
+             background-color: var(--coral-pink);
+         }
+ 
+         /* FOOTER con fondo semitransparente */
+         footer {
+             background-color: rgba(249, 243, 241, 0.4);
+             padding: 40px 20px;
+             text-align: center;
+             margin-top: 50px;
+         }
+ 
+         .footer-container {
+             display: flex;
+             justify-content: center;
+             flex-wrap: wrap;
+             gap: 40px;
+             margin-bottom: 20px;
+         }
+ 
+         .footer-box h4 {
+             color: var(--rich-raspberry);
+             margin-bottom: 10px;
+         }
+ 
+         .footer-box ul {
+             list-style: none;
+             padding: 0;
+         }
+ 
+         .footer-box ul li {
+             margin-bottom: 8px;
+         }
+ 
+         .footer-box a {
+             text-decoration: none;
+             color: #333;
+             transition: color 0.3s ease;
+         }
+ 
+         .footer-box a:hover {
+             color: var(--rich-raspberry);
+         }
+ 
+         .footer-bottom {
+             font-size: 14px;
+             color: #777;
+         }
+ 
+         /* Media queries para responsividad */
+         @media (max-width: 768px) {
+             .main-banner h1 {
+                 font-size: 2rem;
+             }
+             .main-banner p {
+                 font-size: 1rem;
+             }
+             .category-container {
+                 grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+             }
+             nav {
+                 flex-direction: column;
+                 gap: 10px;
+             }
+         }
+        
+         /* Animaciones e íconos sociales */
+         .social-icon svg {
+             vertical-align: middle;
+             transition: all 0.6s ease;
+         }
+ 
+         .social-icon:hover svg {
+             transform: scale(1.2) rotate(360deg);
+             filter: drop-shadow(0 0 8px var(--rich-raspberry));
+         }
+ 
+         .whatsapp-icon svg {
+             animation: heartbeat 1.5s infinite;
+         }
+ 
+         @keyframes heartbeat {
+             0%, 100% {
+                 transform: scale(1);
+             }
+             50% {
+                 transform: scale(1.25);
+             }
+         }
+     </style>
+ </head>
+ <body>
+ 
+     <header>
+         <a href="index.html">
+             <img src="logo1.jpeg" alt="Logo COSMÉTICOS QF" class="header-logo">
+         </a>
+         <div class="social-icons">
+             <a href="carrito.html" id="cart-link-main">0 Compras 👜</a>
+             <a href="registro.html">👤</a>
+             <a href="Mis Favoritos.html">♥</a>
+             <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="social-icon facebook-icon">
+                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="var(--rich-raspberry)" viewBox="0 0 24 24">
+                     <path d="M22.675 0h-21.35C.6 0 0 .6 0 1.337v21.326C0 23.4.6 24 1.325 24h11.495v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.894-4.788 4.659-4.788 1.325 0 2.466.099 2.797.143v3.24l-1.918.001c-1.504 0-1.796.715-1.796 1.763v2.31h3.59l-.467 3.622h-3.123V24h6.116C23.4 24 24 23.4 24 22.673V1.327C24 .6 23.4 0 22.675 0z"/>
+                 </svg>
+             </a>
+             <a href="https://wa.me/59168289837" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="social-icon whatsapp-icon">
+                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#25D366" viewBox="0 0 24 24">
+                     <path d="M12 .5C5.8.5.9 5.4.9 11.6c0 2 .5 4 1.4 5.8L0 24l6.8-2.2c1.7.9 3.6 1.4 5.5 1.4 6.2 0 11.1-4.9 11.1-11.1S18.2.5 12 .5zm0 20.1c-1.7 0-3.4-.5-4.9-1.3l-.4-.2-4.1 1.3 1.3-4-.3-.4c-.9-1.4-1.4-3.1-1.4-4.8 0-5 4.1-9.1 9.1-9.1s9.1 4.1 9.1 9.1-4.1 9.1-9.1 9.1zm4.9-6.8c-.3-.1-1.7-.8-2-1s-.5-.1-.7.1c-.2.3-.8 1-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.5-1.6-.9-.8-1.6-1.8-1.7-2.1s0-.4.1-.5.3-.3.4-.5.1-.3.2-.5c.1-.2 0-.4 0-.5 0-.1-.7-1.7-1-2.4-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4s-1 1-1 2.4 1 2.7 1.1 2.9c.1.2 2 3.1 4.9 4.4.7.3 1.2.6 1.6.7.7.2 1.3.2 1.8.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.5-.1-.2-.3-.3-.6-.4z"/>
+                 </svg>
+             </a>
+         </div>
+     </header>
+ 
+     <div class="main-banner">
+         <h1>¡Bienvenida a COSMÉTICOS QF - Cabello!</h1>
+         <p>Descubre nuestra línea completa de productos para el cuidado de tu cabello.</p>
+     </div>
+ 
+     <div class="category-container">
+         <div class="category-card">
+             <h3>Cuestionario</h3>
+             <p>Descubre los productos ideales para tu tipo de cabello respondiendo unas sencillas preguntas.</p>
+             <a href="cuestionario.html">Ir</a>
+         </div>
+         <div class="category-card">
+             <img src="cabello-seco1.jpeg" alt="Cabello Seco" />
+             <h3>Cabello Seco</h3>
+             <a href="cabello-seco.html">Ver Productos</a>
+         </div>
+         <div class="category-card">
+             <img src="cabello1.jpeg" alt="Cabello Graso" />
+             <h3>Cabello Graso</h3>
+             <a href="cabello-graso.html.html">Ver Productos</a>
+         </div>
+         <div class="category-card">
+             <img src="mascarilla1.jpeg" alt="Mascarillas" />
+             <h3>Mascarillas</h3>
+             <a href="mascarilla.html">Ver Productos</a>
+         </div>
+         <div class="category-card">
+             <img src="cabello-normal1.jpeg" alt="Cabello Normal" />
+             <h3>Cabello Normal</h3>
+             <a href="cabello-normal.html">Ver Productos</a>
+         </div>
+     </div>
+ 
+     <footer>
+         <div class="footer-container">
+             <div class="footer-box">
+                 <h4>COSMÉTICOS QF</h4>
+                 <p>Expertos en cuidado y belleza con productos de alta calidad.</p>
+             </div>
+             <div class="footer-box">
+                 <h4>Categorías</h4>
+                 <ul>
+                     <li><a href="cabello-seco.html">Cabello Seco</a></li>
+                     <li><a href="cabello-graso.html.html">Cabello Graso</a></li>
+                     <li><a href="mascarilla.html">Mascarillas</a></li>
+                     <li><a href="cabello-normal.html">Cabello Normal</a></li>
+                 </ul>
+             </div>
+             <div class="footer-box">
+                 <h4>Accesos Rápidos</h4>
+                 <ul>
+                     <li><a href="registro.html">Mi cuenta</a></li>
+                     <li><a href="seguimiento-pedido.html">Seguimiento de pedido</a></li>
+                     <li><a href="politicas-entrega.html">Políticas de entrega</a></li>
+                 </ul>
+             </div>
+             <div class="footer-box">
+                 <h4>Contacto</h4>
+                 <p>📍 ORURO - Bolivia</p>
+                 <p>📞 +591 68289837</p>
+             </div>
+         </div>
+         <div class="footer-bottom">© 2025 COSMÉTICOS QF. Todos los derechos reservados nelidaachacollotarqui@gmail.com-rominacama236@gmail.com </div>
+     </footer>
+ 
+     <script>
+         // JavaScript para actualizar el contador del carrito en el header
+         const cartLink = document.getElementById("cart-link-main");
+ 
+         function actualizarContadorCarrito() {
+             let compras = JSON.parse(localStorage.getItem("compras")) || [];
+             if (cartLink) {
+                 cartLink.textContent = `${compras.length} Compras 👜`;
+             }
+         }
+ 
+         // Llama a la función al cargar la página para asegurar que el contador esté actualizado
+         document.addEventListener('DOMContentLoaded', actualizarContadorCarrito);
+     </script>
+ 
+ </body>
+ </html>

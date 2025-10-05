@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cabello Graso - COSMÉTICOS QF</title>
+    <style>
+        /* Fuentes */
+        @font-face {
+            font-family: 'Muthiara';
+            src: url('Muthiara.otf') format('opentype'), url('Muthiara.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        /* Paleta de colores */
+        :root {
+            --light-pink: #F3C3C5;
+            --rose-pink: #E9ABAE;
+            --coral-pink: #D78289;
+            --deep-rose: #C65C69;
+            --rich-raspberry: #B5123A;
+            --light-rose-variant: #FADAD9;
+        }
+
+        /* Reset y estilos generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Muthiara', cursive;
+            background-color: var(--light-pink);
+            background-image: url('Fondo 1.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-position: center center;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Encabezado */
+        header {
+            background: transparent;
+            text-align: center;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .header-logo {
+            height: 50vh;
+            margin: 20px auto;
+            filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.25));
+            display: block;
+            animation: pulse 3s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .social-icons {
+            margin-top: 10px;
+            font-size: 22px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icons a {
+            text-decoration: none;
+            color: var(--rich-raspberry);
+            font-weight: bold;
+        }
+
+        .social-icon svg {
+            vertical-align: middle;
+            transition: all 0.6s ease;
+        }
+
+        .social-icon:hover svg {
+            transform: scale(1.2) rotate(360deg);
+            filter: drop-shadow(0 0 8px var(--rich-raspberry));
+        }
+
+        .whatsapp-icon svg {
+            animation: heartbeat 1.5s infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.25); }
+        }
+
+        /* Título de Categoría */
+        .category-title {
+            text-align: center;
+            margin: 30px 0 20px 0;
+            font-size: 2.5rem;
+            color: var(--rich-raspberry);
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Grid de Productos */
+        .product-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+            width: 250px;
+            text-align: center;
+            padding: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .img-container {
+            width: 100%;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .product-card img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+        
+        /* Estilo original de "AGOTADO" */
+        .img-container.agotado-overlay-card::before {
+            content: "AGOTADO";
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            color: red;
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 5;
+            border-radius: 10px;
+            transform: rotate(-10deg);
+        }
+
+        .product-card h3 {
+            font-size: 1.25rem;
+            color: #333;
+            margin: 10px 0 5px 0;
+        }
+
+        .product-card p {
+            font-size: 0.9rem;
+            color: #666;
+            min-height: 40px;
+            margin-bottom: 15px;
+        }
+
+        .agotado {
+            color: red;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: block;
+            margin: auto;
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: auto;
+            width: 100%;
+        }
+
+        .card-actions button {
+            flex-grow: 1;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            color: #fff;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .favorite-btn {
+            background: none;
+            border: none;
+            font-size: 30px;
+            cursor: pointer;
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            color: var(--rose-pink);
+            user-select: none;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+            z-index: 10;
+            padding: 5px;
+        }
+
+        .favorite-btn.active,
+        .favorite-btn:hover {
+            color: red;
+            text-shadow: 0 0 8px rgba(255, 0, 0, 0.9);
+        }
+
+        /* Pie de página */
+        footer {
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 20px;
+        }
+
+        .footer-box h4 {
+            color: var(--rich-raspberry);
+            margin-bottom: 10px;
+        }
+
+        .footer-box ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-box ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-box a {
+            text-decoration: none;
+            color: #333;
+            transition: color 0.3s ease;
+        }
+
+        .footer-box a:hover {
+            color: var(--deep-rose);
+        }
+
+        .footer-bottom {
+            font-size: 14px;
+            color: #777;
+        }
+
+        /* Notificación */
+        .notificacion {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .notificacion.show {
+            display: block;
+            opacity: 1;
+        }
+
+        /* Modal de Producto */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1001;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            width: 800px;
+            max-width: 90%;
+            display: flex;
+            gap: 30px;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 30px;
+            font-weight: bold;
+            color: #555;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .modal-close:hover {
+            color: var(--rich-raspberry);
+        }
+
+        .modal-image-col {
+            width: 40%;
+            position: relative;
+        }
+
+        .img-zoom-container {
+            width: 100%;
+            height: 350px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            background-color: #f0f0f0;
+            position: relative;
+            overflow: hidden;
+            cursor: crosshair;
+        }
+        
+        .img-zoom-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            user-select: none;
+            transition: transform 0.3s ease;
+            transform: scale(1);
+            transform-origin: 50% 50%;
+        }
+
+        .img-zoom-container:hover img {
+            transform: scale(2.5);
+            object-fit: cover;
+        }
+
+        .modal-details-col {
+            width: 60%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal-details-col h2 {
+            font-size: 2rem;
+            color: var(--rich-raspberry);
+            margin-bottom: 10px;
+        }
+
+        .modal-details-col p {
+            margin-bottom: 15px;
+            color: #666;
+            text-align: justify;
+        }
+
+        .modal-labels p {
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .modal-labels span {
+            background-color: var(--light-rose-variant);
+            color: var(--rich-raspberry);
+            padding: 5px 10px;
+            border-radius: 5px;
+            margin-right: 8px;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-top: 5px;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: auto;
+        }
+
+        .modal-actions button {
+            flex-grow: 1;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            color: #fff;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        /* Botones de acción */
+        .buy-btn, .modal-buy-btn {
+            background-color: var(--deep-rose);
+        }
+
+        .buy-btn:hover, .modal-buy-btn:hover {
+            background-color: var(--rich-raspberry);
+        }
+
+        .reserve-btn, .modal-reserve-btn {
+            background-color: var(--coral-pink);
+        }
+
+        .reserve-btn:hover, .modal-reserve-btn:hover {
+            background-color: var(--deep-rose);
+        }
+
+        /* Botón fijo de WhatsApp */
+        #whatsapp-fixed-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            background-color: var(--deep-rose);
+            border-radius: 50%;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: float 2s ease-in-out infinite;
+        }
+
+        #whatsapp-fixed-button svg {
+            fill: white;
+            width: 30px;
+            height: 30px;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .product-card {
+                width: 90%;
+            }
+
+            .modal-content {
+                flex-direction: column;
+                gap: 20px;
+                max-height: 90vh;
+                overflow-y: auto;
+            }
+            
+            .modal-image-col, .modal-details-col {
+                width: 100%;
+            }
+
+            .img-zoom-container {
+                height: 250px;
+            }
+
+            .modal-actions {
+                flex-direction: column;
+            }
+        }
+        /* HEADER - Adaptado de la página principal */
+header {
+    background: transparent; /* Fondo transparente */
+    text-align: center;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Estilos del panel de navegación (menú) */
+.main-nav {
+    background-color: transparent; /* COMPLETAMENTE transparente */
+    border-radius: 15px; 
+    margin: 0 auto 20px auto; 
+    padding: 12px 0; 
+    max-width: 900px; 
+    width: 95%; 
+    z-index: 10;
+    position: relative;
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px; 
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: var(--deep-rose); /* Color del texto inicial: Palo de rosa */
+    font-weight: bold;
+    font-size: 1.2rem;
+    padding: 10px 18px; 
+    border-radius: 25px; 
+    transition: all 0.4s ease; 
+    position: relative;
+    overflow: hidden; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Sombra sutil */
+    border: 1px solid var(--rose-pink); /* Borde sutil palo de rosa */
+}
+
+/* Estilo al pasar el ratón (hover) */
+.main-nav a:hover {
+    color: white; 
+    background-color: var(--rich-raspberry); 
+    transform: translateY(-3px) scale(1.02); 
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2); 
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); 
+    border-color: var(--rich-raspberry); 
+}
+
+/* ESTILO CORREGIDO AL PRESIONAR (active) Y ENFOCAR (focus) */
+.main-nav a:active,
+.main-nav a:focus {
+    color: white;
+    background-color: var(--deep-rose); /* Fondo palo de rosa al presionar */
+    border: 1px solid var(--deep-rose); /* Borde del mismo color */
+    transform: translateY(0) scale(1); /* Vuelve a su estado normal */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra más suave al presionar */
+}
+
+.header-title-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 0;
+}
+
+.social-icons {
+    margin-top: 10px;
+    font-size: 22px;
+}
+
+.social-icons a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: var(--rich-raspberry);
+    font-weight: bold;
+}
+ 
+/* Cambiado a color "palo de rosa" */
+.social-icon.whatsapp-top-icon {
+    color: var(--deep-rose); 
+}
+ 
+/* Animaciones de íconos sociales */
+.social-icon svg {
+    vertical-align: middle;
+    transition: all 0.6s ease;
+}
+
+.social-icon:hover svg {
+    transform: scale(1.2) rotate(360deg);
+    filter: drop-shadow(0 0 8px var(--rich-raspberry));
+}
+
+/* Latido constante para WhatsApp superior */
+.whatsapp-icon svg {
+    animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.25);
+    }
+}
+    </style>
+</head>
+
+<body>
+    <header>
+    <nav class="main-nav">
+        <ul>
+            <li><a href="rosental 2.html">Inicio</a></li>
+                <li><a href="facial.html">Facial</a></li>
+                <li><a href="cabello.html">Cabello</a></li>
+                <li><a href="tintes.html">Tintes</a></li>
+                <li><a href="nuevas.html">Nuevas</a></li>
+                <li><a href="pago.html">Pago</a></li>
+                <li><a href="acerca de....html">Acerca de...</a></li>
+        </ul>
+    </nav>
+    <div class="header-title-container">
+        <img src="logo1.jpeg" alt="Logo Centrado" class="header-logo">
+    </div>
+    <div class="social-icons">
+        <a href="carrito.html" id="cart-link">0 Compras 👜</a>
+        <a href="registro.html">👤</a>
+        <a href="Mis Favoritos.html">♥</a>
+        <a href="https://www.facebook.com" target="_blank" aria-label="Facebook" class="social-icon facebook-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#b5123a" viewBox="0 0 24 24">
+                <path d="M22.675 0h-21.35C.6 0 0 .6 0 1.337v21.326C0 23.4.6 24 1.325 24h11.495v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.894-4.788 4.659-4.788 1.325 0 2.466.099 2.797.143v3.24l-1.918.001c-1.504 0-1.796.715-1.796 1.763v2.31h3.59l-.467 3.622h-3.123V24h6.116C23.4 24 24 23.4 24 22.673V1.327C24 .6 23.4 0 22.675 0z"/>
+            </svg>
+        </a>
+        <a href="https://wa.me/59168289837" target="_blank" aria-label="WhatsApp" class="social-icon whatsapp-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#25D366" viewBox="0 0 24 24">
+                <path d="M12 .5C5.8.5.9 5.4.9 11.6c0 2 .5 4 1.4 5.8L0 24l6.8-2.2c1.7.9 3.6 1.4 5.5 1.4 6.2 0 11.1-4.9 11.1-11.1S18.2.5 12 .5zm0 20.1c-1.7 0-3.4-.5-4.9-1.3l-.4-.2-4.1 1.3 1.3-4-.3-.4c-.9-1.4-1.4-3.1-1.4-4.8 0-5 4.1-9.1 9.1-9.1s9.1 4.1 9.1 9.1-4.1 9.1-9.1 9.1zm4.9-6.8c-.3-.1-1.7-.8-2-1s-.5-.1-.7.1c-.2.3-.8 1-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.1-0.5-2.5-1.6-.9-.8-1.6-1.8-1.7-2.1s0-.4.1-.5.3-.3.4-.5.1-.3.2-.5c.1-.2 0-.4 0-.5 0-.1-.7-1.7-1-2.4-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4s-1 1-1 2.4 1 2.7 1.1 2.9c.1.2 2 3.1 4.9 4.4.7.3 1.2.6 1.6.7.7.2 1.3.2 1.8.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.5-.1-.2-.3-.3-.6-.4z"/>
+            </svg>
+        </a>
+    </div>
+</header>
+
+    <h2 class="category-title">CABELLO GRASO</h2>
+
+    <div class="product-grid" id="productos">
+    </div>
+
+    <div class="notificacion" id="notificacion"></div>
+
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeProductModal()">×</span>
+            <div class="modal-image-col">
+                <div class="img-zoom-container">
+                    <img id="modal-product-image" src="" alt="Producto">
+                </div>
+            </div>
+            <div class="modal-details-col">
+                <h2 id="modal-product-name"></h2>
+                <p id="modal-product-description"></p>
+                <h4 class="modal-section-title">Uso:</h4>
+                <p id="modal-product-usage"></p>
+                <div class="modal-labels">
+                    <p>Etiquetas: <span id="modal-product-tags"></span></p>
+                </div>
+                <div class="modal-actions" id="modal-actions">
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-box">
+                <h4>COSMÉTICOS QF</h4>
+                <p>Expertos en cuidado y belleza con productos de alta calidad.</p>
+            </div>
+            <div class="footer-box">
+                <h4>Categorías</h4>
+                <ul>
+                    <li><a href="cabello-seco.html">Cabello Seco</a></li>
+                    <li><a href="cabello-graso.html">Cabello Graso</a></li>
+                    <li><a href="mascarilla.html">Mascarillas</a></li>
+                    <li><a href="cabello-normal.html">Cabello Normal</a></li>
+                </ul>
+            </div>
+            <div class="footer-box">
+                <h4>Accesos Rápidos</h4>
+                <ul>
+                    <li><a href="registro.html">Mi cuenta</a></li>
+                    <li><a href="seguimiento-pedido.html">Seguimiento de pedido</a></li>
+                    <li><a href="politicas-entrega.html">Políticas de entrega</a></li>
+                </ul>
+            </div>
+            <div class="footer-box">
+                <h4>Contacto</h4>
+                <p>📍 ORURO - Bolivia</p>
+                <p>📞 +591 68289837</p>
+            </div>
+        </div>
+        <div class="footer-bottom">© 2025 COSMÉTICOS QF. Todos los derechos reservados nelidaachacollotarqui@gmail.com-rominacama236@gmail.com.</div>
+    </footer>
+    <div id="whatsapp-fixed-button">
+        <a href="https://wa.me/59168289837" target="_blank" aria-label="WhatsApp">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <path
+                    d="M12 .5C5.8.5.9 5.4.9 11.6c0 2 .5 4 1.4 5.8L0 24l6.8-2.2c1.7.9 3.6 1.4 5.5 1.4 6.2 0 11.1-4.9 11.1-11.1S18.2.5 12 .5zm0 20.1c-1.7 0-3.4-.5-4.9-1.3l-.4-.2-4.1 1.3 1.3-4-.3-.4c-.9-1.4-1.4-3.1-1.4-4.8 0-5 4.1-9.1 9.1-9.1s9.1 4.1 9.1 9.1-4.1 9.1-9.1 9.1zm4.9-6.8c-.3-.1-1.7-.8-2-1s-.5-.1-.7.1c-.2.3-.8 1-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.5-1.6-.9-.8-1.6-1.8-1.7-2.1s0-.4.1-.5.3-.3.4-.5.1-.3.2-.5c.1-.2 0-.4 0-.5 0-.1-.7-1.7-1-2.4-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4s-1 1-1 2.4 1 2.7 1.1 2.9c.1.2 2 3.1 4.9 4.4.7.3 1.2.6 1.6.7.7.2 1.3.2 1.8.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.5-.1-.2-.3-.3-.6-.4z" />
+            </svg>
+        </a>
+    </div>
+
+    <script>
+        // Los datos de los productos
+        let productos = [
+            {
+                nombre: "Shampoo Ballerina Detox Carbón",
+                stock: true,
+                imagen: "cabello1.jpeg",
+                descripcion_corta: "Limpia profundamente y purifica el cuero cabelludo.",
+                descripcion_modal: "Este shampoo limpia profundamente y purifica el cuero cabelludo graso con carbón activado y menta, dejando una sensación de frescura duradera.",
+                uso_producto: "Aplica sobre el cabello mojado, masajea suavemente y enjuaga. Para mejores resultados, repite si es necesario.",
+                etiquetas: ["Detox", "Carbón Activado", "Menta", "Cabello Graso", "Limpieza Profunda"]
+            },
+            {
+                nombre: "Acondicionador Ballerina Detox Carbón",
+                stock: true,
+                imagen: "cabello4.jpeg",
+                descripcion_corta: "Desenreda, suaviza y elimina residuos sin apelmazar.",
+                descripcion_modal: "Este acondicionador desenreda, suaviza y ayuda a eliminar residuos del cabello graso, complementando el efecto purificante del carbón activado y la menta.",
+                uso_producto: "Después del shampoo, aplica de medios a puntas, deja actuar 1-2 minutos y enjuaga abundantemente. Evita la raíz si tienes tendencia a engrasarla más.",
+                etiquetas: ["Detox", "Carbón Activado", "Menta", "Cabello Graso", "Desenredante", "Ligero"]
+            },
+            {
+                nombre: "Shampoo L’Oréal Elvive Hialurónico Pure",
+                stock: false,
+                imagen: "cabello3.jpeg",
+                descripcion_corta: "Equilibra raíces grasas e hidrata puntas secas sin sal.",
+                descripcion_modal: "Shampoo que equilibra las raíces grasas e hidrata intensamente las puntas secas, gracias a su fórmula con ácido hialurónico y sin sal.",
+                uso_producto: "Masajea en el cuero cabelludo y el cabello mojado. Enjuaga con agua. Para un equilibrio óptimo, úsalo regularmente.",
+                etiquetas: ["Ácido Hialurónico", "Sin Sal", "Cabello Mixto", "Equilibrio", "L'Oréal Elvive"]
+            },
+            {
+                nombre: "Acondicionador L’Oréal Elvive Hialurónico Pure",
+                stock: true,
+                imagen: "cabello2.jpeg",
+                descripcion_corta: "Desenreda e hidrata sin apelmazar el cabello mixto.",
+                descripcion_modal: "Acondicionador ideal para cabello mixto, desenreda e hidrata las puntas sin apelmazar las raíces, proporcionando suavidad y ligereza.",
+                uso_producto: "Después del shampoo, aplica en las puntas y medios del cabello. Deja actuar unos segundos y enjuaga bien. No aplicar en la raíz.",
+                etiquetas: ["Ácido Hialurónico", "Sin Apelmazar", "Cabello Mixto", "Hidratación Ligera", "L'Oréal Elvive"]
+            }
+        ];
+
+        const cartLink = document.getElementById("cart-link");
+        const notificacion = document.getElementById("notificacion");
+        const productsContainer = document.getElementById("productos");
+        const productModal = document.getElementById("productModal");
+        const modalProductName = document.getElementById("modal-product-name");
+        const modalProductImage = document.getElementById("modal-product-image");
+        const modalProductDescription = document.getElementById("modal-product-description");
+        const modalProductUsage = document.getElementById("modal-product-usage");
+        const modalProductTags = document.getElementById("modal-product-tags");
+        const modalActions = document.getElementById("modal-actions");
+        let imgZoomContainer = null;
+
+        function actualizarContadorCarrito() {
+            let compras = JSON.parse(localStorage.getItem("compras")) || [];
+            if (cartLink) {
+                cartLink.textContent = `${compras.length} Compras 👜`;
+            }
+        }
+
+        function agregarAlCarrito(productName, productImage, productDescription) {
+            const productDetails = {
+                name: productName,
+                image: productImage,
+                description: productDescription
+            };
+            let compras = JSON.parse(localStorage.getItem("compras")) || [];
+            compras.push(productDetails);
+            localStorage.setItem("compras", JSON.stringify(compras));
+            actualizarContadorCarrito();
+            mostrarNotificacion(`¡"${productName}" agregado a tus compras!`);
+        }
+
+        function reservarProducto(productName) {
+            const whatsappNumber = '59168289837';
+            const message = encodeURIComponent(`Hola, me gustaría reservar el producto: "${productName}".`);
+            const whatsappLink = `https://wa.me/${whatsappNumber}?text=${message}`;
+            window.open(whatsappLink, '_blank');
+        }
+
+        function toggleFavorite(button, productName, productImage, productDescription) {
+            let favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
+            const productData = {
+                name: productName,
+                image: productImage,
+                description: productDescription
+            };
+            const existingProductIndex = favoritos.findIndex(item => item.name === productName);
+            if (existingProductIndex > -1) {
+                favoritos.splice(existingProductIndex, 1);
+                button.classList.remove("active");
+                button.innerHTML = "♡";
+            } else {
+                favoritos.push(productData);
+                button.classList.add("active");
+                button.innerHTML = "♥";
+            }
+            localStorage.setItem("favoritos", JSON.stringify(favoritos));
+            mostrarNotificacion(`"${productName}" ${existingProductIndex > -1 ? 'eliminado' : 'agregado'} de favoritos`);
+        }
+
+        function handleMouseMove(e) {
+            if (!imgZoomContainer) return;
+            const containerRect = imgZoomContainer.getBoundingClientRect();
+            const imgElement = imgZoomContainer.querySelector('img');
+            const x = e.clientX - containerRect.left;
+            const y = e.clientY - containerRect.top;
+            const percentX = (x / containerRect.width) * 100;
+            const percentY = (y / containerRect.height) * 100;
+            imgElement.style.transformOrigin = `${percentX}% ${percentY}%`;
+        }
+
+        function handleMouseLeave() {
+            if (!imgZoomContainer) return;
+            const imgElement = imgZoomContainer.querySelector('img');
+            imgElement.style.transformOrigin = '50% 50%';
+        }
+
+        function openProductModal(product) {
+            modalProductName.textContent = product.nombre;
+            modalProductImage.src = product.imagen;
+            modalProductDescription.textContent = product.descripcion_modal;
+            modalProductUsage.textContent = product.uso_producto;
+            let tagsHtml = '';
+            if (product.etiquetas && product.etiquetas.length > 0) {
+                product.etiquetas.forEach(tag => {
+                    tagsHtml += `<span>${tag}</span>`;
+                });
+            } else {
+                tagsHtml = "No especificadas";
+            }
+            modalProductTags.innerHTML = tagsHtml;
+            modalActions.innerHTML = product.stock ? `
+                <button class="modal-buy-btn" onclick="agregarAlCarrito('${product.nombre}', '${product.imagen}', '${product.descripcion_modal + ' Uso: ' + product.uso_producto}'); closeProductModal();">
+                    🛒 Comprar ahora
+                </button>
+                <button class="modal-reserve-btn" onclick="reservarProducto('${product.nombre}'); closeProductModal();">
+                    📦 Reservar
+                </button>
+            ` : `
+                <p class="agotado" style="flex-grow: 1;">AGOTADO</p>
+                <button class="modal-reserve-btn" onclick="reservarProducto('${product.nombre}'); closeProductModal();">
+                    📦 Reservar
+                </button>
+            `;
+            productModal.style.display = 'flex';
+            imgZoomContainer = document.querySelector(".img-zoom-container");
+            imgZoomContainer.removeEventListener('mousemove', handleMouseMove);
+            imgZoomContainer.removeEventListener('mouseleave', handleMouseLeave);
+            imgZoomContainer.addEventListener('mousemove', handleMouseMove);
+            imgZoomContainer.addEventListener('mouseleave', handleMouseLeave);
+        }
+
+        function closeProductModal() {
+            productModal.style.display = 'none';
+            if (imgZoomContainer) {
+                imgZoomContainer.removeEventListener('mousemove', handleMouseMove);
+                imgZoomContainer.removeEventListener('mouseleave', handleMouseLeave);
+            }
+        }
+
+        function mostrarProductos(lista = productos) {
+            productsContainer.innerHTML = "";
+            let favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
+
+            lista.forEach((p, i) => {
+                const isFavorite = favoritos.some(item => item.name === p.nombre);
+                const favoriteIcon = isFavorite ? '♥' : '♡';
+                const favoriteClass = isFavorite ? 'active' : '';
+                const card = document.createElement("div");
+                card.classList.add("product-card");
+
+                let productActionsHtml = '';
+                if (p.stock) {
+                    productActionsHtml = `
+                        <button class="buy-btn" onclick="event.stopPropagation(); agregarAlCarrito('${p.nombre}', '${p.imagen}', '${p.descripcion_modal + ' Uso: ' + p.uso_producto}')">
+                            🛒 Comprar
+                        </button>
+                        <button class="reserve-btn" onclick="event.stopPropagation(); reservarProducto('${p.nombre}')">
+                            📦 Reserva
+                        </button>
+                    `;
+                } else {
+                    productActionsHtml = `
+                        <p class="agotado" style="width: 100%;">AGOTADO</p>
+                        <button class="reserve-btn" onclick="event.stopPropagation(); reservarProducto('${p.nombre}')">
+                            📦 Reserva
+                        </button>
+                    `;
+                }
+
+                card.innerHTML = `
+                    <button class="favorite-btn ${favoriteClass}"
+                        data-name="${p.nombre}"
+                        data-image="${p.imagen}"
+                        data-description="${p.descripcion_modal + ' Uso: ' + p.uso_producto}"
+                        onclick="event.stopPropagation(); toggleFavorite(this, '${p.nombre}', '${p.imagen}', '${p.descripcion_modal + ' Uso: ' + p.uso_producto}')">
+                        ${favoriteIcon}
+                    </button>
+                    <div class="img-container ${!p.stock ? 'agotado-overlay-card' : ''}" onclick="openProductModal(productos.find(prod => prod.nombre === '${p.nombre}'))">
+                         <img src="${p.imagen}" alt="${p.nombre}">
+                    </div>
+                    <h3>${p.nombre}</h3>
+                    <p>${p.descripcion_corta}</p>
+                    <div class="card-actions">
+                        ${productActionsHtml}
+                    </div>
+                `;
+                productsContainer.appendChild(card);
+            });
+            actualizarContadorCarrito();
+        }
+
+        function mostrarNotificacion(mensaje) {
+            notificacion.textContent = mensaje;
+            notificacion.classList.add("show");
+            setTimeout(() => {
+                notificacion.classList.remove("show");
+            }, 2500);
+        }
+
+        // Cargar productos al iniciar la página
+        mostrarProductos();
+    </script>
+</body>
+</html>
